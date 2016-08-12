@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+<div class="datos">
+<p>
+  <b>Pais:</b>
+  <%= @country.country %>
+</p>
+<div id="vinculos">
+<i class="icon-edit"></i><%= link_to 'Editar', edit_country_path(@country) %> <i class="icon-list"></i><%= link_to 'Lista', countries_path %>
+</div>
+</div>

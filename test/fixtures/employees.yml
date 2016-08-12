@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  person_id: 
+  function: 
+  contract_date: 2016-08-10
+  attachment: MyString
+
+two:
+  person_id: 
+  function: 
+  contract_date: 2016-08-10
+  attachment: MyString

@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %> </p>
+
+<div class="datos">
+
+<p>
+  <strong>Dirección:</strong>
+  <%= @address.direccion %>
+</p>
+
+<p>
+  <strong>Calle:</strong>
+  <%= @address.calle %>
+</p>
+
+<p>
+  <strong>Barrio:</strong>
+  <%= @address.barrio %>
+</p>
+
+<p>
+  <strong>Ciudad:</strong>
+  <%= @address.city.city %>
+</p>
+
+<p>
+  <strong>Departamento/Estado/Provincia:</strong>
+  <%= @address.city.departamento.departamento %>
+</p>
+
+<p>
+  <strong>Pais:</strong>
+  <%= @address.city.departamento.country.country %>
+</p>
+
+<div id="vinculos">
+<i class="icon-edit"></i><%= link_to 'Editar', edit_address_path(@address) %> <i class="icon-list"></i><%= link_to 'Lista', addresses_path  %>
+</div>
+</div>

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+<div class="datos">
+<p>
+  <strong>Rol:</strong>
+  <%= @role.role %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @role.description %>
+</p>
+<div id="vinculos">
+<i class="icon-edit"></i><%= link_to 'Editar', edit_role_path(@role) %> <i class="icon-list"></i><%= link_to 'Lista', role_path %>
+</div>
+</div>

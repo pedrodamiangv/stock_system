@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+<div class="datos">
+<p>
+  <strong>Funcionario:</strong>
+  <%=link_to @employee.person.full_name, @employee.person %>
+</p>
+
+<p>
+  <strong>Funciones:</strong>
+  <%=  %>
+  <table  id="my-table" class="table table-bordered">
+    <thead  class="table-title">
+      <tr>
+        <th class="span1 centrar">Funcion</th>
+        <th class="span1 centrar">Descripción</th>
+        <th colspan="3" class="span5 centrar">Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @employee.functions.each do |function| %>
+        <tr>
+          <td><%= function.function %></td>
+          <td><%= function.description %></td>
+          <td><%= link_to 'Ver', function %></td>
+          <td><%= link_to 'Editar', edit_function_path(function) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</p>
+
+<p>
+  <strong>Fecha de Contracto:</strong>
+  <%= @employee.contract_date %>
+</p>
+
+<p>
+  <strong>Curriculum:</strong>
+  <%= link_to 'Descargar documento/curriculum', @employee.attachment_url %>
+</p>
+
+<div id="vinculos">
+	<i class="icon-edit"></i><%= link_to 'Editar', edit_employee_path(@employee) %> <i class="icon-list"></i><%= link_to 'Lista', employees_path  %>
+</div>
+</div>

@@ -1,0 +1,119 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require bootstrap-datepicker3
+ *= require_self
+ */
+.centrar{
+  text-align: center;
+}
+#vinculos a:link { 
+color:#1E90FF;
+font-size:12px;
+font-weight:bold;
+}
+#vinculos a:visited {
+color:#1E90FF;
+font-size:12px;
+font-weight:bold;
+}
+.cuadro{
+    box-shadow: 3px rgba(0,0,0,.1);
+    border: 1px solid #CCC;
+    border-radius: 3px;
+    padding-left: 10px;
+    padding-bottom: 30px;
+    
+    margin-bottom:20px;
+    padding-top: 10px;
+    background-color: #E6E6FA;
+}
+.table-title{ background:#424242;
+ color:#FFFFFF;
+ text-align:left;
+ text-transform:uppercase;
+}
+table { background:#D3E4E5;
+ border:1px solid gray;
+ border-collapse:collapse;
+ color:#fff;
+ font:normal 10px verdana, arial, helvetica, sans-serif;
+}
+caption { border:1px solid #5C443A;
+ color:#5C443A;
+ font-weight:bold;
+ letter-spacing:20px;
+ text-align:center;
+ text-transform:uppercase;
+}
+td, th { color:#363636;
+ font:normal 10px verdana, arial, helvetica, sans-serif;
+}
+.li { 
+    color:#363636;
+    font:normal 9px verdana, arial, helvetica, sans-serif;
+}
+tr { border:1px dotted gray;
+}
+thead th, tfoot th { background:#424242;
+ color:#FFFFFF;
+ text-align:left;
+ text-transform:uppercase;
+}
+tbody td{
+    font:normal 10px verdana, arial, helvetica, sans-serif;
+}
+tbody td a { color:#363636;
+ text-decoration:none;
+}
+tbody td a:visited { color:gray;
+ text-decoration:line-through;
+}
+tbody td a:hover { text-decoration:underline;
+}
+tbody th a { color:#363636;
+ font-weight:normal;
+ text-decoration:none;
+}
+tbody th a:hover { color:#363636;
+}
+tbody td+td+td+td a { background-image:url('bullet_blue.png');
+ background-position:left center;
+ background-repeat:no-repeat;
+ color:#03476F;
+ padding-left:15px;
+}
+tbody td+td+td+td a:visited { background-image:url('bullet_white.png');
+ background-position:left center;
+ background-repeat:no-repeat;
+}
+tbody th, tbody td { text-align:left;
+ vertical-align:top;
+}
+tfoot td { background:#5C443A;
+ color:#FFFFFF;
+ padding-top:3px;
+}
+.odd { background:#fff;
+}
+tbody tr:hover { background:#D8D8D8;
+ border:1px solid #03476F;
+ color:#000000;
+}
+
+.error_message {  
+  color: #D00;  
+  padding-left: 5px;  
+  font-size: 9px; 
+  line-height: 0.3em;
+}

@@ -1,0 +1,74 @@
+<p id="notice"><%= sanitize(notice) %></p>
+<div class="datos">
+<p>
+  <strong>Nombre:</strong>
+  <%= @person.first_name %>
+</p>
+
+<p>
+  <strong>Apellido:</strong>
+  <%= @person.last_name %>
+</p>
+
+<p>
+  <strong>Numero de documento:</strong>
+  <%= @person.doc %>
+</p>
+
+<p>
+  <strong>Telefono:</strong>
+  <%= @person.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @person.user.email %>
+</p>
+
+<p>
+  <strong>Sexo:</strong>
+  <%= @person.sex %>
+</p>
+
+<p>
+  <strong>Fecha de Nacimiento:</strong>
+  <%= @person.birthdate %>
+</p>
+
+<p>
+  <strong>Direcciones:</strong>
+  <table  id="my-table" class="table table-bordered">
+    <thead  class="table-title">
+      <tr>
+        <th class="span1 centrar">Direccion</th>
+        <th class="span1 centrar">Calle</th>
+        <th class="span1 centrar">Barrio</th>
+        <th class="span1 centrar">Ciudad</th>
+        <th class="span1 centrar">Departamento/Provincia/Estado</th>
+        <th class="span1 centrar">Pais</th>
+        <th colspan="3" class="span5 centrar">Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @person.addresses.each do |address| %>
+        <tr>
+          <td><%= address.direccion %></td>
+          <td><%= address.calle %></td>
+          <td><%= address.barrio %></td>
+          <td><%= address.city.city %></td>
+          <td><%= address.city.departamento.departamento %></td>
+          <td><%= address.city.departamento.country.country %></td>
+          <td><%= link_to 'Ver', address %></td>
+          <td><%= link_to 'Editar', edit_address_path(address) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</p>
+
+
+<div id="vinculos">
+<i class="icon-edit"></i><%= link_to 'Editar', edit_person_path(@person) %> <i class="icon-list"></i><%= link_to 'Lista', people_path  %>
+</div>
+</div>

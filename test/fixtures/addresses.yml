@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  city: 
+  direccion: MyString
+  calle: MyString
+  barrio: MyString
+
+two:
+  city: 
+  direccion: MyString
+  calle: MyString
+  barrio: MyString

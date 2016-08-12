@@ -1,0 +1,53 @@
+<script type="text/javascript">
+   function fillDepartamento(country_id){
+    var states = new Array();
+    $('#city_departamento_id').empty();
+    <% for state in @departamentos do %>
+      states.push(new Array(<%= state.country_id %>, '<%= state.departamento %>', <%= state.id %>));
+    <% end %>
+    states.forEach(function(state){
+      if (state[0] == country_id) {
+        $('#city_departamento_id').addOption(state[1], state[2]);
+      }
+    });
+    $('#deparSection').show();
+  }
+</script>
+
+<%= form_for(@city, :validate => true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+<div class="container">
+  <div class="row">
+    <div id="registro">
+      <fieldset class="form-group">
+      <div class="col-xs-4">
+          <%= f.label "Ciudad" %>
+          <p id="mensajeCity" class="error_message"></p>
+          <div id="fieldCity">
+            <%= f.text_field :city, :required => true, :maxlength => 30, :class => "form-control", :onkeyUp => "validarText(this,'fieldCity','mensajeCity')" %>
+          </div>
+          </br>
+          <%= f.label "Pais" %>
+          <p id="mensajePais" class="error_message"></p>
+          <div id="fieldPais">
+            <%= f.collection_select :pais_id ,Country.all,:id,:country, { prompt: " -- Selecciona un pais -- ", :selected => params[:search], hide_label: :true }, class: "form-control", :required => true, :onchange => "fillDepartamento(this.value)" %>
+          </div>
+          </br>
+          <div id="deparSection" style="display: none">
+            <%= f.label "Departamento" %>
+            <p id="mensajeDepartamento" class="error_message"></p>
+            <div id="fieldDepartamento">
+            <%= f.collection_select :departamento_id ,@departamentos,:id,:departamento, { prompt: " -- Selecciona un departamento -- ", :selected => params[:search], }, class: "form-control", :required => true %>
+            </div>
+            </br>
+          </div>
+          </br>
+
+          <%= f.submit "Guardar", :disabled => true, class: "btn btn-large btn-primary" %>
+          <%= link_to "Cancelar", cities_path, class: "btn btn-large btn-inverse" %>
+        <% end %>
+      </div>
+      </fieldset>
+    </div>
+  </div>
+</div>

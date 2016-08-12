@@ -1,0 +1,38 @@
+<div class="flickr_pagination">
+    <div class="page_info">
+      <p id="notice"><%= notice %></p>
+
+      <div class="container">
+        <div class="row">
+          <legend>Lista de Departamentos/Provincias/Estados</legend>
+
+          <table  id="my-table" class="table table-bordered">
+            <thead  class="table-title">
+              <tr>
+                <th class="span1 centrar">Departamento/Provincia/Estado</th>
+                <th class="span1 centrar">Pais</th>
+                <th colspan="3" class="span5 centrar">Acciones</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @departamentos.each do |departamento| %>
+                <tr>
+                  <td><%= departamento.departamento %></td>
+                  <td><%= departamento.country.country %></td>
+                  <td><%= link_to 'Ver', departamento %></td>
+                  <td><%= link_to 'Editar', edit_departamento_path(departamento) %></td>
+                  <td><%= link_to 'Eliminar', departamento, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <%= will_paginate @departamentos, :container => false %>
+          </br></br>
+
+          <%= link_to 'Nuevo Departamento/Estado/Provincia', new_departamento_path %>
+        </div>
+      </div> 
+    </div>
+    
+  </div>

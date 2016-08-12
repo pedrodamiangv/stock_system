@@ -1,0 +1,11 @@
+<% if object.errors.any? %>
+  <div class="alert alert-danger">
+  	<i class="icon-warning-sign"></i><strong>Atencion! </strong> 
+    El formulario contiene <%= pluralize(object.errors.count, "error")%>.
+    <ul>
+    <% object.errors.full_messages.each do |msg| %>
+      <li> * <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

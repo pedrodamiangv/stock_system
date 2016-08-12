@@ -1,0 +1,33 @@
+<%= form_for(@employee, :validate => true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+<div class="container">
+  <div class="row">
+    <div id="registro">
+      <fieldset class="form-group">
+      <div class="col-xs-4">
+          <%= f.label "Empleado" %>
+          <%= f.collection_select :person_id ,@people,:id,:full_name_doc, { prompt: " -- Selecciona una persona registrada en el sistema -- ", :selected => params[:search], hide_label: :true}, class: "form-control", :required => true %>
+          </br>
+          <%= f.label "Fecha de Contrato" %>
+          <p id="messageContract" class="error_message"></p>
+          <div id="fieldContract">
+              <%= f.text_field :contract_date, :required => true, :readonly => true, :maxlength => 30, :class => "form-control", 'data-behaviour' => 'datepicker' %>
+          </div>
+          </br>
+          <%= f.label "Funciones" %>
+          <div id="funcion">
+              <%= select_tag "employee_functions", options_from_collection_for_select(@functions, 'id', 'function',@employee.functions.map{ |j| j.id }), :multiple => true, :class => "form-control", :required => true %>
+          </div>
+          </br>
+          <%= f.label "Curriculum *(pdf doc htm html docx)" %>
+          <%= f.file_field :attachment, :class => "form-control" %>
+          </br></br>
+
+          <%= f.submit "Guardar", class: "btn btn-large btn-primary" %>
+          <%= link_to "Cancelar", employees_path, class: "btn btn-large btn-inverse" %>
+        <% end %>
+      </div>
+      </fieldset>
+    </div>
+  </div>
+</div>

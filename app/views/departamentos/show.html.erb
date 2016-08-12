@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+<div class="datos">
+<p>
+  <strong>Departamento:</strong>
+  <%= @departamento.departamento %>
+</p>
+
+<p>
+  <strong>Pais:</strong>
+  <%= @departamento.country.country %>
+</p>
+<div id="vinculos">
+<i class="icon-edit"></i><%= link_to 'Editar', edit_departamento_path(@departamento) %> <i class="icon-list"></i><%= link_to 'Lista', departamentos_path  %>
+</div>
+</div>

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+<div class="datos">
+<p>
+  <strong>Function:</strong>
+  <%= @function.function %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @function.description %>
+</p>
+<div id="vinculos">
+<i class="icon-edit"></i><%= link_to 'Editar', edit_function_path(@function) %> <i class="icon-list"></i><%= link_to 'Lista', functions_path %>
+</div>
+</div>

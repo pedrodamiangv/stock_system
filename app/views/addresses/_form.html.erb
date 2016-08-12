@@ -1,0 +1,90 @@
+<script type="text/javascript">
+   function fillDepartamento(country_id){
+    var states = new Array();
+    $('#address_departamento_id').empty();
+    <% for state in @departamentos do %>
+      states.push(new Array(<%= state.country_id %>, '<%= state.departamento %>', <%= state.id %>));
+    <% end %>
+    $('#address_departamento_id').addOption(' -- Seleccione un departamento -- ', 0);
+    states.forEach(function(state){
+      if (state[0] == country_id) {
+        $('#address_departamento_id').addOption(state[1], state[2]);
+      }
+    });
+    $('#deparSection').show();
+  }
+  function fillCities(departamento_id){
+    var cities = new Array();
+    $('#address_city_id').empty();
+    <% for city in @cities do %>
+      cities.push(new Array(<%= city.departamento_id %>, '<%= city.city %>', <%= city.id %>));
+    <% end %>
+    cities.forEach(function(city){
+      if (city[0] == departamento_id) {
+        $('#address_city_id').addOption(city[1], city[2]);
+      }
+    });
+    $('#citySection').show();
+  }
+</script>
+
+<%= form_for(@address, :validate => true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+<div class="container">
+  <div class="row">
+    <div id="registro">
+      <fieldset class="form-group">
+      <div class="col-xs-4">
+          <%= f.label "Direccion" %>
+          <p id="messageAddress" class="error_message"></p>
+          <div id="fieldAddress">
+            <%= f.text_field :direccion, :required => true, :maxlength => 100, :class => "form-control", :onkeyUp => "validarText(this,'fieldAddress','messageAddress')" %>
+          </div>
+          </br>
+          <%= f.label "Calle" %>
+          <p id="messageCalle" class="error_message"></p>
+          <div id="fieldCalle">
+            <%= f.text_field :calle, :required => true, :maxlength => 100, :class => "form-control", :onkeyUp => "validarText(this,'fieldCalle','messageCalle')" %>
+          </div>
+          </br>
+          <%= f.label "Barrio" %>
+          <p id="messageBarrio" class="error_message"></p>
+          <div id="fieldBarrio">
+            <%= f.text_field :barrio, :required => true, :maxlength => 30, :class => "form-control", :onkeyUp => "validarText(this,'fieldBarrio','messageBarrio')" %>
+          </div>
+          </br>
+          <%= f.label "Pais" %>
+          <p id="mensajePais" class="error_message"></p>
+          <div id="fieldPais">
+            <%= f.collection_select :pais_id ,Country.all,:id,:country, { prompt: " -- Selecciona un pais -- ", :selected => params[:search], hide_label: :true }, class: "form-control", :required => true, :onchange => "fillDepartamento(this.value)" %>
+          </div>
+          <%= link_to 'Agregar Pais', new_country_path %> 
+          </br>
+          <div id="deparSection" style="display: none">
+            <%= f.label "Departamento" %>
+            <p id="messageDepartamento" class="error_message"></p>
+            <div id="fieldDepartamento">
+            <%= f.collection_select :departamento_id ,@departamentos,:id,:departamento, { prompt: " -- Selecciona un departamento -- ", :selected => params[:search], }, class: "form-control", :required => true, :onchange => "fillCities(this.value)" %>
+            </div>
+            <%= link_to 'Agregar Departamento', new_departamento_path %> 
+            </br>
+          </div>
+          <div id="citySection" style="display: none">
+            <%= f.label "Ciudad" %>
+            <p id="messageCity" class="error_message"></p>
+            <div id="fieldCity">
+            <%= f.collection_select :city_id ,@cities,:id,:city, { prompt: " -- Selecciona una ciudad -- ", :selected => params[:search], }, class: "form-control", :required => true %>
+            </div>
+            <%= link_to 'Agregar Ciudad', new_city_path %> 
+            </br>
+          </div>
+          </br>
+
+          <%= f.submit "Guardar", :disabled => true, class: "btn btn-large btn-primary" %>
+          <%= link_to "Cancelar", addresses_path, class: "btn btn-large btn-inverse" %>
+        <% end %>
+      </div>
+      </fieldset>
+    </div>
+  </div>
+</div>

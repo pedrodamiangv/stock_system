@@ -1,0 +1,56 @@
+function fillDepartamento(country_id){
+	var states = new Array();
+	$('#address_departamento_id').empty();
+	<% for state in @departamentos do %>
+	  states.push(new Array(<%= state.country_id %>, '<%= state.departamento %>', <%= state.id %>));
+	<% end %>
+	$('#address_departamento_id').addOption(' -- Seleccione un departamento -- ', 0);
+	states.forEach(function(state){
+	  if (state[0] == country_id) {
+	    $('#address_departamento_id').addOption(state[1], state[2]);
+	  }
+	});
+	$('#deparSection').show();
+}
+
+function fillCities(departamento_id){
+	var vcities = new Array();
+	$('#address_city_id').empty();
+	<% for city in @cities do %>
+	  vcities.push(new Array(<%= city.departamento_id %>, '<%= city.city %>', <%= city.id %>));
+	<% end %>
+	vcities.forEach(function(city){
+	  if (city[0] == departamento_id) {
+	    $('#address_city_id').addOption(city[1], city[2]);
+	  }
+	});
+	$('#citySection').show();
+}
+
+function saveAddress(){
+	var address = $('#address_direccion').val();
+	var street = $('#address_calle').val();
+	var neighborhood = $('#address_barrio').val();
+	var city = $('#address_city_id').val();
+	if(isEmpty(address)||isEmpty(street)||isEmpty(neighborhood)||isEmpty(city)){
+		$('#sectionError').addClass('alert alert-danger');
+		$('#sectionError').html('<p>Por favor, completa todos los campos.</p>');
+		$("#sectionError").fadeTo(1000, 500).slideUp(500, function(){ 
+			$(this).html(''); 
+			$(this).removeClass('alert alert-danger');
+		}); 
+	} else {
+		$('form#new_address').trigger('submit.rails');
+		$('#sectionError').addClass('alert alert-success');
+		$('#sectionError').html('<p>Direccion registrada. Direccion: ' + address + '</p>');
+		$("#sectionError").fadeTo(1000, 500).slideUp(500, function(){ 
+			$(this).html(''); 
+			$(this).removeClass('alert alert-danger');
+			$('#modal-window').modal('hide');
+			$('#person_addresses').addOption(address, <%= @last_id + 1 %>);
+		}); 
+		
+	}
+}
+
+$("#modal-window").html("<%= escape_javascript(render 'people/new_address_person') %>");

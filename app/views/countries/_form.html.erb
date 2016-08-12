@@ -1,0 +1,22 @@
+<%= form_for(@country, :validate => true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+<div class="container">
+  <div class="row">
+    <div id="registro">
+      <fieldset class="form-group">
+      <div class="col-xs-4">
+          <%= f.label "Pais" %>
+          <p id="mensajeCountry" class="error_message"></p>
+          <div id="fieldCountry">
+            <%= f.text_field :country, :required => true, :maxlength => 30, :class => "form-control", :onkeyUp => "validarText(this,'fieldCountry','mensajeCountry')" %>
+          </div>
+          </br>
+
+          <%= f.submit "Guardar", :disabled => true, class: "btn btn-large btn-primary" %>
+          <%= link_to "Cancelar", countries_path, class: "btn btn-large btn-inverse" %>
+        <% end %>
+      </div>
+      </fieldset>
+    </div>
+  </div>
+</div>

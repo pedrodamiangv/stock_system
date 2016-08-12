@@ -1,0 +1,28 @@
+<%= form_for(@departamento, :validate => true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+<div class="container">
+  <div class="row">
+    <div id="registro">
+      <fieldset class="form-group">
+      <div class="col-xs-4">
+          <%= f.label "Departamento" %>
+          <p id="mensajeDepartamento" class="error_message"></p>
+          <div id="fieldDepartamento">
+            <%= f.text_field :departamento, :required => true, :maxlength => 30, :class => "form-control", :onkeyUp => "validarText(this,'fieldDepartamento','mensajeDepartamento')" %>
+          </div>
+          </br>
+          <%= f.label "Pais" %>
+          <p id="mensajeCountry" class="error_message"></p>
+          <div id="fieldCountry">
+            <%= f.collection_select :country_id ,@countries,:id,:country, { prompt: " -- Selecciona un pais -- ", :selected => params[:search], hide_label: :true }, class: "form-control", :required => true %>
+          </div>
+          </br></br>
+
+          <%= f.submit "Guardar", :disabled => true, class: "btn btn-large btn-primary" %>
+          <%= link_to "Cancelar", cities_path, class: "btn btn-large btn-inverse" %>
+        <% end %>
+      </div>
+      </fieldset>
+    </div>
+  </div>
+</div>
