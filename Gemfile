@@ -10,6 +10,7 @@ gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'will_paginate'
 gem 'carrierwave', '~> 0.9'
 gem 'devise'
+gem 'devise-bootstrap-views'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

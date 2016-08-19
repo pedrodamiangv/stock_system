@@ -20,8 +20,8 @@
                 <tr>
                   <td><%= departamento.departamento %></td>
                   <td><%= departamento.country.country %></td>
-                  <td><%= link_to 'Ver', departamento %></td>
-                  <td><%= link_to 'Editar', edit_departamento_path(departamento) %></td>
+                  <td><%= link_to 'Ver', departamento, class: "btn-link" %></td>
+                  <td><%= link_to 'Editar', edit_departamento_path(departamento), class: "btn-link" %></td>
                   <td><%= link_to 'Eliminar', departamento, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
                 </tr>
               <% end %>
@@ -30,7 +30,7 @@
           <%= will_paginate @departamentos, :container => false %>
           </br></br>
 
-          <%= link_to 'Nuevo Departamento/Estado/Provincia', new_departamento_path %>
+          <%= link_to 'Nuevo Departamento/Estado/Provincia', new_departamento_path, class: "btn btn-link" %>
         </div>
       </div> 
     </div>

@@ -20,8 +20,8 @@
                 <tr>
                   <td><%= function.function %></td>
                   <td><%= function.description %></td>
-                  <td><%= link_to 'Ver', function %></td>
-                  <td><%= link_to 'Editar', edit_function_path(function) %></td>
+                  <td><%= link_to 'Ver', function, class: "btn-link" %></td>
+                  <td><%= link_to 'Editar', edit_function_path(function), class: "btn-link" %></td>
                   <td><%= link_to 'Eliminar', function, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
                 </tr>
               <% end %>
@@ -30,7 +30,7 @@
           <%= will_paginate @functions, :container => false %>
           </br></br>
 
-          <%= link_to 'Nueva Función', new_function_path %>
+          <%= link_to 'Nueva Función', new_function_path, class: "btn btn-link" %>
         </div>
       </div> 
     </div>

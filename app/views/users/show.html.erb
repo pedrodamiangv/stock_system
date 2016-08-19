@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+<div class="datos">
+<p>
+  <b>Persona:</b>
+  <%= link_to @user.person.full_name_doc, @user.person, class: "btn-link" %>
+</p>
+<p>
+  <b>Correo Electronico:</b>
+  <%= @user.email %>
+</p>
+<div id="vinculos">
+<i class="icon-edit"></i><%= link_to 'Editar', edit_user_registration_path(@user), class: "btn-link" %> <i class="icon-list"></i><%= link_to 'Lista', users_path, class: "btn-link" %>
+</div>
+</div>

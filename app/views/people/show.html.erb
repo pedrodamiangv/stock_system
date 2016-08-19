@@ -22,7 +22,11 @@
 
 <p>
   <strong>Email:</strong>
-  <%= @person.user.email %>
+  <% if @person.user %>
+    <%= @person.user.email %>
+  <% else %>
+      <%= link_to "No se ha creado una cuenta para este funcionario, Desea Crearlo?", new_user_registration_path, class: "btn-link"  %>
+  <% end %>
 </p>
 
 <p>
@@ -59,8 +63,8 @@
           <td><%= address.city.city %></td>
           <td><%= address.city.departamento.departamento %></td>
           <td><%= address.city.departamento.country.country %></td>
-          <td><%= link_to 'Ver', address %></td>
-          <td><%= link_to 'Editar', edit_address_path(address) %></td>
+          <td><%= link_to 'Ver', address, class: "btn-link" %></td>
+          <td><%= link_to 'Editar', edit_address_path(address), class: "btn-link" %></td>
         </tr>
       <% end %>
     </tbody>
@@ -69,6 +73,6 @@
 
 
 <div id="vinculos">
-<i class="icon-edit"></i><%= link_to 'Editar', edit_person_path(@person) %> <i class="icon-list"></i><%= link_to 'Lista', people_path  %>
+<i class="icon-edit"></i><%= link_to 'Editar', edit_person_path(@person), class: "btn-link" %> <i class="icon-list"></i><%= link_to 'Lista', people_path, class: "btn-link"  %>
 </div>
 </div>

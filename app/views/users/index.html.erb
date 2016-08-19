@@ -1,0 +1,38 @@
+<div class="flickr_pagination">
+    <div class="page_info">
+      <p id="notice"><%= notice %></p>
+
+      <div class="container">
+        <div class="row">
+          <legend>Lista de Usuarios</legend>
+
+          <table  id="my-table" class="table table-bordered">
+            <thead  class="table-title">
+              <tr>
+                <th class="span1 centrar">Nombre - Documento</th>
+                <th class="span1 centrar">Email</th>
+                <th colspan="3" class="span5 centrar">Acciones</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @users.each do |user| %>
+                <tr>
+                  <td><%= user.person.full_name_doc %></td>
+                  <td><%= user.email %></td>
+                  <td><%= link_to 'Ver', user_path(user), class: "btn-link" %></td>
+                  <td><%= link_to 'Editar', edit_user_registration_path(user), class: "btn-link" %></td>
+                  <td><%= link_to 'Eliminar', user, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <%= will_paginate @users, :container => false %>
+          </br></br>
+
+          <%= link_to 'Nuevo Usuario', new_user_registration_path, class: "btn btn-link" %>
+        </div>
+      </div> 
+    </div>
+    
+  </div>

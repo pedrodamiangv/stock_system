@@ -19,8 +19,8 @@
               <% @countries.each do |country| %>
                 <tr>
                   <td><%= country.country %></td>
-                  <td><%= link_to 'Ver', country %></td>
-                  <td><%= link_to 'Editar', edit_country_path(country) %></td>
+                  <td><%= link_to 'Ver', country, class: "btn-link" %></td>
+                  <td><%= link_to 'Editar', edit_country_path(country), class: "btn-link" %></td>
                   <td><%= link_to 'Eliminar', country, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
                 </tr>
               <% end %>
@@ -29,7 +29,7 @@
           <%= will_paginate @countries, :container => false %>
           </br></br>
 
-          <%= link_to 'Nuevo Pais', new_country_path %>
+          <%= link_to 'Nuevo Pais', new_country_path, class: "btn btn-link" %>
         </div>
       </div> 
     </div>

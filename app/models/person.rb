@@ -1,7 +1,7 @@
 class Person < ActiveRecord::Base
 	has_and_belongs_to_many :addresses
-	belongs_to :employee
-	belongs_to :user
+	has_one :employee
+	has_one :user
 
 	validates :first_name, presence: true, length: { maximum: 30, minimum:3 }
 	validates :last_name, presence: true, length: { maximum: 30, minimum:3 }

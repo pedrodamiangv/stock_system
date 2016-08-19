@@ -17,9 +17,11 @@
 //= require bootstrap-datepicker
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.es.js
 //= require_tree .
-$(document).ready(function() {
-  //Ready for calendar
-  $('[data-behaviour~=datepicker]').datepicker({ language: "es" });
+
+$(document).ready(function(){
+    //Ready for calendar
+    $('[data-behaviour~=datepicker]').datepicker({ language: "es" });
+
 });
 
 /*This function is for add options to a select*/

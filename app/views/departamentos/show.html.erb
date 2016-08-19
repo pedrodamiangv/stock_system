@@ -10,6 +10,6 @@
   <%= @departamento.country.country %>
 </p>
 <div id="vinculos">
-<i class="icon-edit"></i><%= link_to 'Editar', edit_departamento_path(@departamento) %> <i class="icon-list"></i><%= link_to 'Lista', departamentos_path  %>
+<i class="icon-edit"></i><%= link_to 'Editar', edit_departamento_path(@departamento), class: "btn-link" %> <i class="icon-list"></i><%= link_to 'Lista', departamentos_path, class: "btn-link"  %>
 </div>
 </div>

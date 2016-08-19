@@ -22,8 +22,8 @@
                   <td><%= city.city %></td>
                   <td><%= city.departamento.departamento %></td>
                   <td><%= city.departamento.country.country %></td>
-                  <td><%= link_to 'Ver', city %></td>
-                  <td><%= link_to 'Editar', edit_city_path(city) %></td>
+                  <td><%= link_to 'Ver', city, class: "btn-link" %></td>
+                  <td><%= link_to 'Editar', edit_city_path(city), class: "btn-link" %></td>
                   <td><%= link_to 'Eliminar', city, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
                 </tr>
               <% end %>
@@ -32,7 +32,7 @@
           <%= will_paginate @cities, :container => false %>
           </br></br>
 
-          <%= link_to 'Nueva Ciudad', new_city_path %>
+          <%= link_to 'Nueva Ciudad', new_city_path, class: "btn btn-link" %>
         </div>
       </div> 
     </div>

@@ -1,8 +1,8 @@
-<p id="notice"><%= notice %></p>
+<p id="notice"><%= sanitize(notice) %></p>
 <div class="datos">
 <p>
   <strong>Funcionario:</strong>
-  <%=link_to @employee.person.full_name, @employee.person %>
+  <%=link_to @employee.person.full_name, @employee.person, class: "btn-link" %>
 </p>
 
 <p>
@@ -41,6 +41,6 @@
 </p>
 
 <div id="vinculos">
-	<i class="icon-edit"></i><%= link_to 'Editar', edit_employee_path(@employee) %> <i class="icon-list"></i><%= link_to 'Lista', employees_path  %>
+	<i class="icon-edit"></i><%= link_to 'Editar', edit_employee_path(@employee), class: "btn-link" %> <i class="icon-list"></i><%= link_to 'Lista', employees_path, class: "btn-link"  %>
 </div>
 </div>

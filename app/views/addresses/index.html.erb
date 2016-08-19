@@ -28,8 +28,8 @@
                   <td><%= address.city.city %></td>
                   <td><%= address.city.departamento.departamento %></td>
                   <td><%= address.city.departamento.country.country %></td>
-                  <td><%= link_to 'Ver', address %></td>
-                  <td><%= link_to 'Editar', edit_address_path(address) %></td>
+                  <td><%= link_to 'Ver', address, class: "btn-link" %></td>
+                  <td><%= link_to 'Editar', edit_address_path(address), class: "btn-link" %></td>
                   <td><%= link_to 'Eliminar', address, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
                 </tr>
               <% end %>
@@ -38,7 +38,7 @@
           <%= will_paginate @addresses, :container => false %>
           </br></br>
 
-          <%= link_to 'Nueva Dirección', new_address_path %>
+          <%= link_to 'Nueva Dirección', new_address_path, class: "btn btn-link" %>
         </div>
       </div> 
     </div>

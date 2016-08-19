@@ -35,7 +35,7 @@
             <div id="fieldPais">
               <%= f_address.collection_select :pais_id ,Country.all,:id,:country, { prompt: " -- Selecciona un pais -- ", :selected => params[:search], hide_label: :true }, class: "form-control", :onchange => "fillDepartamento(this.value)" %>
             </div>
-            <%= link_to 'Agregar Pais', new_country_path %> 
+            <%= link_to 'Agregar Pais', new_country_path, class: "btn-link"  %> 
             </br>
             <div id="deparSection" style="display: none">
               <%= f_address.label "Departamento" %>
@@ -43,7 +43,7 @@
               <div id="fieldDepartamento">
               <%= f_address.collection_select :departamento_id ,@departamentos,:id,:departamento, { prompt: " -- Selecciona un departamento -- ", :selected => params[:search], }, class: "form-control", :onchange => "fillCities(this.value)" %>
               </div>
-              <%= link_to 'Agregar Departamento', new_departamento_path %> 
+              <%= link_to 'Agregar Departamento', new_departamento_path, class: "btn-link"  %> 
               </br>
             </div>
             <div id="citySection" style="display: none">
@@ -52,7 +52,7 @@
               <div id="fieldCity">
               <%= f_address.collection_select :city_id ,@cities,:id,:city, { prompt: " -- Selecciona una ciudad -- ", :selected => params[:search], }, class: "form-control" %>
               </div>
-              <%= link_to 'Agregar Ciudad', new_city_path %> 
+              <%= link_to 'Agregar Ciudad', new_city_path, class: "btn-link"  %> 
               </br>
             </div>
             </br>

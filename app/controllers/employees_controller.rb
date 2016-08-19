@@ -16,14 +16,12 @@ class EmployeesController < ApplicationController
   # GET /employees/new
   def new
     @employee = Employee.new
-    @people = Person.order("created_at desc").all
-    @functions = Function.order("created_at desc").all
+    objects_for_forms
   end
 
   # GET /employees/1/edit
   def edit
-    @people = Person.order("created_at desc").all
-    @functions = Function.order("created_at desc").all
+    objects_for_forms
   end
 
   # POST /employees
@@ -35,11 +33,10 @@ class EmployeesController < ApplicationController
 
     respond_to do |format|
       if @employee.save
-        format.html { redirect_to @employee, notice: 'El funcionario ha sido añadido satisfactoriamente.' }
+        format.html { redirect_to @employee, notice: "La persona a sido registrada como funcionario. <a href='#{new_user_registration_path}'>Click aqui para crearle un usuario</a>".html_safe }
         format.json { render :show, status: :created, location: @employee }
       else
-        @people = Person.order("created_at desc").all
-        @functions = Function.order("created_at desc").all
+        objects_for_forms
         format.html { render :new }
         format.json { render json: @employee.errors, status: :unprocessable_entity }
       end
@@ -59,8 +56,7 @@ class EmployeesController < ApplicationController
         format.html { redirect_to @employee, notice: 'El funcionario ha sido actualizado satisfactoriamente.' }
         format.json { render :show, status: :ok, location: @employee }
       else
-        @people = Person.order("created_at desc").all
-        @functions = Function.order("created_at desc").all
+        objects_for_forms
         format.html { render :edit }
         format.json { render json: @employee.errors, status: :unprocessable_entity }
       end
@@ -86,5 +82,10 @@ class EmployeesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def employee_params
       params.require(:employee).permit(:person_id, :contract_date, :attachment)
+    end
+
+    def objects_for_forms
+      @functions = Function.order("created_at desc").all
+      @people = Person.order("created_at desc").where('id NOT IN (?)',Employee.all.map{|e| e.person_id })
     end
 end
