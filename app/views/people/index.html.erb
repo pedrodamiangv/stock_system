@@ -26,10 +26,14 @@
                   <td><%= person.full_name %></td>
                   <td><%= person.doc %></td>
                   <td><%= person.phone %></td>
-                  <td><%= person.user.email %></td>
+                  <td><% if person.user %>
+    <%= person.user.email %>
+  <% else %>
+      <%= link_to "No se ha creado una cuenta para este funcionario, Desea Crearlo?", new_user_registration_path, class: "btn-link"  %>
+  <% end %></td>
                   <td><%= person.sex %></td>
-                  <td><%= person.birthday %></td>
-                  <td><%= person.birthday %></td>
+                  <td><%= person.doc %></td>
+                  <td><%= person.doc %></td>
                   <td><%= link_to 'Ver', person, class: "btn-link" %></td>
                   <td><%= link_to 'Editar', edit_person_path(person), class: "btn-link" %></td>
                   <td><%= link_to 'Eliminar', person, method: :delete, data: { confirm: 'Estas seguro?' } %></td>

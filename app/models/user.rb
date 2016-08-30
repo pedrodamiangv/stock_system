@@ -20,4 +20,8 @@ class User < ActiveRecord::Base
   def full_name_doc
     self.person.full_name_doc
   end
+
+  def full_name
+    self.person.full_name
+  end
 end

@@ -30,7 +30,9 @@
           <%= will_paginate @users, :container => false %>
           </br></br>
 
-          <%= link_to 'Nuevo Usuario', new_user_registration_path, class: "btn btn-link" %>
+          <%= link_to 'Nuevo Usuario ', new_user_registration_path, class: "btn btn-link" %>
+          |
+          <%= link_to " Descargar PDF", users_path(@users, :format => :pdf), class: "btn btn-link" %>
         </div>
       </div> 
     </div>
