@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160812010356) do
+ActiveRecord::Schema.define(version: 20160830180625) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "city_id",    limit: 4,   null: false
@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(version: 20160812010356) do
 
   add_index "addresses_people", ["address_id"], name: "index_people_addresses_on_address_id", using: :btree
   add_index "addresses_people", ["person_id"], name: "index_people_addresses_on_person_id", using: :btree
+
+  create_table "addresses_settings", id: false, force: :cascade do |t|
+    t.integer "setting_id", limit: 4, null: false
+    t.integer "address_id", limit: 4, null: false
+  end
+
+  add_index "addresses_settings", ["address_id"], name: "index_addresses_settings_on_address_id", using: :btree
+  add_index "addresses_settings", ["setting_id"], name: "index_addresses_settings_on_setting_id", using: :btree
 
   create_table "cities", force: :cascade do |t|
     t.string   "city",            limit: 30, null: false
@@ -99,13 +107,25 @@ ActiveRecord::Schema.define(version: 20160812010356) do
     t.datetime "updated_at",              null: false
   end
 
-  create_table "roles_users", force: :cascade do |t|
+  create_table "roles_users", id: false, force: :cascade do |t|
     t.integer "role_id", limit: 4, null: false
     t.integer "user_id", limit: 4, null: false
   end
 
   add_index "roles_users", ["role_id"], name: "index_roles_users_on_role_id", using: :btree
   add_index "roles_users", ["user_id"], name: "index_roles_users_on_user_id", using: :btree
+
+  create_table "settings", force: :cascade do |t|
+    t.string   "name",        limit: 255,   null: false
+    t.string   "phone",       limit: 255
+    t.string   "email",       limit: 255
+    t.string   "ruc",         limit: 255
+    t.text     "description", limit: 65535
+    t.text     "historic",    limit: 65535
+    t.string   "logo",        limit: 255,   null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false

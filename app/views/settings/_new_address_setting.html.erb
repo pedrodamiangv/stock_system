@@ -1,0 +1,70 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div id="registro">
+      <fieldset class="form-group">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h3 id="myModalLabel">Registrar Dirección</h3>
+        </div> 
+        <div class="modal-body">  
+          <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+            <p id="error" class="error"></p>
+            <%= form_for(@address, :remote => true) do |f_address| %>
+            <div id="sectionError"></div>
+            <%= f_address.label "Dirección" %>
+            <p id="messageAddress" class="error_message"></p>
+            <div id="fieldAddress">
+              <%= f_address.text_field :direccion, :maxlength => 100, :class => "form-control", :onkeyUp => "validarText(this,'fieldAddress','messageAddress')" %>
+            </div>
+            </br>
+            <%= f_address.label "Calle" %>
+            <p id="messageCalle" class="error_message"></p>
+            <div id="fieldCalle">
+              <%= f_address.text_field :calle, :maxlength => 100, :class => "form-control", :onkeyUp => "validarText(this,'fieldCalle','messageCalle')" %>
+            </div>
+            </br>
+            <%= f_address.label "Barrio" %>
+            <p id="messageBarrio" class="error_message"></p>
+            <div id="fieldBarrio">
+              <%= f_address.text_field :barrio, :maxlength => 30, :class => "form-control", :onkeyUp => "validarText(this,'fieldBarrio','messageBarrio')" %>
+            </div>
+            </br>
+            <%= f_address.label "Pais" %>
+            <p id="mensajePais" class="error_message"></p>
+            <div id="fieldPais">
+              <%= f_address.collection_select :pais_id ,Country.all,:id,:country, { prompt: " -- Selecciona un pais -- ", :selected => params[:search], hide_label: :true }, class: "form-control", :onchange => "fillDepartamento(this.value)" %>
+            </div>
+            <%= link_to 'Agregar Pais', new_country_path, class: "btn-link"  %> 
+            </br>
+            <div id="deparSection" style="display: none">
+              <%= f_address.label "Departamento" %>
+              <p id="messageDepartamento" class="error_message"></p>
+              <div id="fieldDepartamento">
+              <%= f_address.collection_select :departamento_id ,@departamentos,:id,:departamento, { prompt: " -- Selecciona un departamento -- ", :selected => params[:search], }, class: "form-control", :onchange => "fillCities(this.value)" %>
+              </div>
+              <%= link_to 'Agregar Departamento', new_departamento_path, class: "btn-link"  %> 
+              </br>
+            </div>
+            <div id="citySection" style="display: none">
+              <%= f_address.label "Ciudad" %>
+              <p id="messageCity" class="error_message"></p>
+              <div id="fieldCity">
+              <%= f_address.collection_select :city_id ,@cities,:id,:city, { prompt: " -- Selecciona una ciudad -- ", :selected => params[:search], }, class: "form-control" %>
+              </div>
+              <%= link_to 'Agregar Ciudad', new_city_path, class: "btn-link"  %> 
+              </br>
+            </div>
+            </br>
+          </div> 
+          </div>
+        </div>
+        <div class="modal-footer"> 
+          <%= f_address.submit "Guardar", :onclick => 'saveAddress()', :class => 'btn btn-success' %> 
+          <% end %>
+          <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>  
+        </div>  
+      </fieldset>
+    </div>
+  </div>
+</div>

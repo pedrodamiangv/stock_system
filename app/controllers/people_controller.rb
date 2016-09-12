@@ -55,7 +55,7 @@ class PeopleController < ApplicationController
   # PATCH/PUT /people/1
   # PATCH/PUT /people/1.json
   def update
-    @person = Person.find(params[:person])
+    @person = Person.find(params[:id])
     @p_addresses = Address.where(:id => params[:person_addresses])
     @person.addresses.destroy_all
     @person.addresses << @p_addresses

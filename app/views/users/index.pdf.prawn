@@ -1,9 +1,12 @@
 
 prawn_document(:page_layout => :landscape) do |pdf|
-	pdf.text "Sistema de Stock", :size => 20, :style => :bold, :align => :center
-	pdf.text "Direccion" + " - " + "config.city" + " - " + "config.departamento" + " - Paraguay", :size => 11, :style => :italic, :align => :center
-	pdf.text "Teléfono/Fax: "+ "config.telefono" + " - Email: " + "config.email", :size => 11, :style => :italic, :align => :center
+	config = Setting.first
+	if config 
+	pdf.text config.name.upcase, :size => 20, :style => :bold, :align => :center
+	pdf.text config.addresses.first.direccion + " - " + config.addresses.first.city.city + " - " + config.addresses.first.city.departamento.departamento + " - " + config.addresses.first.city.departamento.country.country, :size => 11, :style => :italic, :align => :center
+	pdf.text "Teléfono/Fax: "+ config.phone + " - Email: " + config.email, :size => 11, :style => :italic, :align => :center
 	pdf.move_down(10) 
+	end
 
 
 	pdf.text "Listado de Usuarios #{Date.today.year}", :size => 15, :style => :bold 

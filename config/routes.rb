@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :settings do
+    collection do
+      get 'new_address_setting'
+    end
+  end
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'

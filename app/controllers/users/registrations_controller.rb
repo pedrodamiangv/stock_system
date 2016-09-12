@@ -36,7 +36,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   def update
-    @user = User.find(params[:user])
+    @user = User.find(params[:id])
     @user_roles = Role.where(:id => params[:user_roles])
     @user.roles.destroy_all
     @user.roles << @user_roles

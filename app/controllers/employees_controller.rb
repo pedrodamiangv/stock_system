@@ -46,7 +46,7 @@ class EmployeesController < ApplicationController
   # PATCH/PUT /employees/1
   # PATCH/PUT /employees/1.json
   def update
-    @employee = Employee.find(params[:employee])
+    @employee = Employee.find(params[:id])
     @e_functions = Function.where(:id => params[:employee_functions])
     @employee.functions.destroy_all
     @employee.functions << @e_functions

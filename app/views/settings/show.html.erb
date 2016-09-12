@@ -1,0 +1,72 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @setting.name %>
+</p>
+
+<p>
+  <strong>Telefono:</strong>
+  <%= @setting.phone %>
+</p>
+
+<p>
+  <strong>Correo electrónico:</strong>
+  <%= @setting.email %>
+</p>
+
+<p>
+  <strong>RUC:</strong>
+  <%= @setting.ruc %>
+</p>
+
+<p>
+  <strong>Descripción:</strong>
+  <%= @setting.description %>
+</p>
+
+<p>
+  <strong>Histórico:</strong>
+  <%= @setting.historic %>
+</p>
+
+<p>
+  <strong>Logo:</strong>
+  <%= image_tag(@setting.logo_url, :width => 50, :height => 50) if @setting.logo.present? %>
+</p>
+
+<p>
+  <strong>Direcciones:</strong>
+  <table  id="my-table" class="table table-bordered">
+    <thead  class="table-title">
+      <tr>
+        <th class="span1 centrar">Direccion</th>
+        <th class="span1 centrar">Calle</th>
+        <th class="span1 centrar">Barrio</th>
+        <th class="span1 centrar">Ciudad</th>
+        <th class="span1 centrar">Departamento/Provincia/Estado</th>
+        <th class="span1 centrar">Pais</th>
+        <th colspan="3" class="span5 centrar">Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @setting.addresses.each do |address| %>
+        <tr>
+          <td><%= address.direccion %></td>
+          <td><%= address.calle %></td>
+          <td><%= address.barrio %></td>
+          <td><%= address.city.city %></td>
+          <td><%= address.city.departamento.departamento %></td>
+          <td><%= address.city.departamento.country.country %></td>
+          <td><%= link_to 'Ver', address, class: "btn-link" %></td>
+          <td><%= link_to 'Editar', edit_address_path(address), class: "btn-link" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</p>
+
+<div id="vinculos">
+<i class="icon-edit"></i><%= link_to 'Editar', edit_setting_path(@setting), class: "btn-link" %> <i class="icon-list"></i><%= link_to 'Lista', settings_path, class: "btn-link"  %>
+</div>
