@@ -1,61 +1,64 @@
 <%= form_for(@person) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="container">
-    <div class="row">
-      <div id="registro">
-        <fieldset class="form-group">
-          <div class="col-xs-4">
-            <%= f.label "Nombre" %>
-            <p id="messageName" class="error_message"></p>
-            <div id="fieldName">
-              <%= f.text_field :first_name, :required => true, :maxlength => 30, :class => "form-control", :onkeyUp => "validarText(this,'fieldName','messageName')" %>
-            </div>
-            </br>
+    <div class="col-md-6 col-md-offset-1">
+      <div class="panel panel-default devise-bs ">
+        <div class="panel-body">
+            <fieldset class="form-group">
+              <div class="form-group">
+                <%= f.label "Nombre" %>
+                <p id="messageName" class="error_message"></p>
+                <div id="fieldName">
+                  <%= f.text_field :first_name, :required => true, :maxlength => 30, :class => "form-control", :onkeyUp => "validarText(this,'fieldName','messageName')" %>
+                </div>
+                </br>
 
-            <%= f.label "Apellido" %>
-            <p id="messageLastName" class="error_message"></p>
-            <div id="fieldLastName">
-              <%= f.text_field :last_name, :required => true, :maxlength => 30, :class => "form-control", :onkeyUp => "validarText(this,'fieldLastName','messageLastName')" %>
-            </div>
-            </br>
+                <%= f.label "Apellido" %>
+                <p id="messageLastName" class="error_message"></p>
+                <div id="fieldLastName">
+                  <%= f.text_field :last_name, :required => true, :maxlength => 30, :class => "form-control", :onkeyUp => "validarText(this,'fieldLastName','messageLastName')" %>
+                </div>
+                </br>
 
-            <%= f.label "Numero de Documento" %>
-            <p id="messageDoc" class="error_message"></p>
-            <div id="fieldDoc">
-              <%= f.text_field :doc, :required => true, :maxlength => 15, :class => "form-control", :onkeyUp => "validarText(this,'fieldDoc','messageDoc')" %>
-            </div>
-            </br>
+                <%= f.label "Numero de Documento" %>
+                <p id="messageDoc" class="error_message"></p>
+                <div id="fieldDoc">
+                  <%= f.text_field :doc, :required => true, :maxlength => 15, :class => "form-control", :onkeyUp => "validarText(this,'fieldDoc','messageDoc')" %>
+                </div>
+                </br>
 
-            <%= f.label "Telefono" %>
-            <p id="messagePhone" class="error_message"></p>
-            <div id="fieldPhone">
-              <%= f.text_field :phone, :required => true, :maxlength => 15, :class => "form-control", :onkeyUp => "validarText(this,'fieldPhone','messagePhone')" %>
-            </div>
-            </br>
-          
-            <%= f.label "Sexo" %>
-            <%= f.select(:sex, ['Masculino', 'Femenino' ], {}, { :class => 'form-control', :required => true })%>
-            <br>
-          
-            <%= f.label "Fecha de Nacimiento" %>
-            <p id="messageBirthday" class="error_message"></p>
-            <div id="fieldBirthday">
-              <%= f.text_field :birthdate, :readonly => true, :required => true, :maxlength => 30, :class => "form-control", 'data-behaviour' => 'datepicker'  %>
-            </div>
-            </br>
+                <%= f.label "Telefono" %>
+                <p id="messagePhone" class="error_message"></p>
+                <div id="fieldPhone">
+                  <%= f.text_field :phone, :required => true, :maxlength => 15, :class => "form-control", :onkeyUp => "validarText(this,'fieldPhone','messagePhone')" %>
+                </div>
+                </br>
+              
+                <%= f.label "Sexo" %>
+                <%= f.select(:sex, ['Masculino', 'Femenino' ], {}, { :class => 'form-control', :required => true })%>
+                <br>
+              
+                <%= f.label "Fecha de Nacimiento" %>
+                <p id="messageBirthday" class="error_message"></p>
+                <div id="fieldBirthday">
+                  <%= f.text_field :birthdate, :readonly => true, :required => true, :maxlength => 30, :class => "form-control", 'data-behaviour' => 'datepicker'  %>
+                </div>
+                </br>
 
-            <%= f.label "Dirección" %>
-            <div id="direccion">
-              <%= select_tag "person_addresses", options_from_collection_for_select(@addresses, 'id', 'direccion',@person.addresses.map{ |j| j.id }), :multiple => true, :class => "form-control", :required => true %>
-            </div>
+                <%= f.label "Dirección" %>
+                <div id="direccion">
+                  <%= select_tag "person_addresses", options_from_collection_for_select(@addresses, 'id', 'direccion',@person.addresses.map{ |j| j.id }), :multiple => true, :class => "form-control", :required => true %>
+                </div>
 
-            <%= link_to "Ingresar nueva dirección", new_address_person_people_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: "btn-link" } %>
-            </br></br>
-          
-            <%= f.submit "Guardar", :disabled => true, class: "btn btn-large btn-primary" %>
-            <%= link_to "Cancelar", people_path, class: "btn btn-large btn-inverse" %>
+                <%= link_to "Ingresar nueva dirección", new_address_person_people_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: "btn-link" } %>
+                </br></br>
+              
+                <%= f.submit "Guardar", :disabled => true, class: "btn btn-large btn-primary" %>
+                <%= link_to "Cancelar", people_path, class: "btn btn-large btn-inverse" %>
+              </div>
+            </fieldset>
           </div>
-        </fieldset>
+        </div>
       </div>
     </div>
   </div>

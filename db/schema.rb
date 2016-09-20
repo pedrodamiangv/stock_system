@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160830180625) do
+ActiveRecord::Schema.define(version: 20160915192742) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "city_id",    limit: 4,   null: false
@@ -127,6 +127,16 @@ ActiveRecord::Schema.define(version: 20160830180625) do
     t.datetime "updated_at",                null: false
   end
 
+  create_table "stores", force: :cascade do |t|
+    t.string   "name",        limit: 50,    null: false
+    t.text     "description", limit: 65535, null: false
+    t.integer  "address_id",  limit: 4,     null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "stores", ["address_id"], name: "index_stores_on_address_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
     t.string   "encrypted_password",     limit: 255, default: "", null: false
@@ -151,4 +161,5 @@ ActiveRecord::Schema.define(version: 20160830180625) do
   add_foreign_key "cities", "departamentos"
   add_foreign_key "departamentos", "countries"
   add_foreign_key "employees", "people"
+  add_foreign_key "stores", "addresses"
 end

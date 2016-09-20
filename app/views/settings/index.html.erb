@@ -1,44 +1,40 @@
+<% provide(:title, "Ajustes") %>
 <div class="flickr_pagination">
-    <div class="page_info">
-      <p id="notice"><%= notice %></p>
-
-      <div class="container">
-        <div class="row">
-          <legend>Configuracion del Sistema</legend>
-
-          <table  id="my-table" class="table table-bordered">
-            <thead  class="table-title">
-              <tr>
-                <th class="span1 centrar">Nombre de la Empresa</th>
-                <th class="span1 centrar">Telefono</th>
-                <th class="span1 centrar">Correo Eletrónico</th>
-                <th class="span1 centrar">RUC</th>
-                <th colspan="3" class="span5 centrar">Acciones</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <% @settings.each do |setting| %>
-                <tr>
-                  <td><%= setting.name %></td>
-                  <td><%= setting.phone %></td>
-                  <td><%= setting.email %></td>
-                  <td><%= setting.ruc %></td>
-                  <td><%= link_to 'Ver', setting, class: "btn-link" %></td>
-                  <td><%= link_to 'Editar', edit_setting_path(setting), class: "btn-link" %></td>
-                  <td><%= link_to 'Eliminar', setting, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-          <%= will_paginate @settings, :container => false %>
-          </br></br>
-
-          <% if @settings.empty? %>
-            <%= link_to 'Nueva Configuración', new_setting_path, class: "btn btn-link" %>
-          <% end %>
-        </div>
-      </div> 
-    </div>
+  <div class="page_info">
+    <p id="notice"><%= notice %></p>
     
-  </div>
+    <legend>Configuracion del Sistema</legend>
+
+    <table  id="my-table" class="table table-bordered">
+      <thead  class="table-title">
+        <tr>
+          <th class="span1 centrar">Nombre de la Empresa</th>
+          <th class="span1 centrar">Telefono</th>
+          <th class="span1 centrar">Correo Eletrónico</th>
+          <th class="span1 centrar">RUC</th>
+          <th colspan="3" class="span5 centrar">Acciones</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @settings.each do |setting| %>
+          <tr>
+            <td><%= setting.name %></td>
+            <td><%= setting.phone %></td>
+            <td><%= setting.email %></td>
+            <td><%= setting.ruc %></td>
+            <td><%= link_to 'Ver', setting, class: "btn-link" %></td>
+            <td><%= link_to 'Editar', edit_setting_path(setting), class: "btn-link" %></td>
+            <td><%= link_to 'Eliminar', setting, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @settings, :container => false %>
+    </br></br>
+
+    <% if @settings.empty? %>
+      <%= link_to 'Nueva Configuración', new_setting_path, class: "btn btn-link" %>
+    <% end %>
+  </div> 
+</div>

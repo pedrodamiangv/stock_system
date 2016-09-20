@@ -1,37 +1,32 @@
-
+<% provide(:title, "Paises") %>
 <div class="flickr_pagination">
-    <div class="page_info">
-      <p id="notice"><%= notice %></p>
+  <div class="page_info">
+    <p id="notice"><%= notice %></p>
 
-      <div class="container">
-        <div class="row">
-          <legend>Lista de Paises</legend>
+    <legend>Lista de Paises</legend>
 
-          <table  id="my-table" class="table table-bordered">
-            <thead  class="table-title">
-              <tr>
-                <th class="span1 centrar">Pais</th>
-                <th colspan="3" class="span5 centrar">Acciones</th>
-              </tr>
-            </thead>
+    <table  id="my-table" class="table table-bordered">
+      <thead  class="table-title">
+        <tr>
+          <th class="span1 centrar">Pais</th>
+          <th colspan="3" class="span5 centrar">Acciones</th>
+        </tr>
+      </thead>
 
-            <tbody>
-              <% @countries.each do |country| %>
-                <tr>
-                  <td><%= country.country %></td>
-                  <td><%= link_to 'Ver', country, class: "btn-link" %></td>
-                  <td><%= link_to 'Editar', edit_country_path(country), class: "btn-link" %></td>
-                  <td><%= link_to 'Eliminar', country, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-          <%= will_paginate @countries, :container => false %>
-          </br></br>
+      <tbody>
+        <% @countries.each do |country| %>
+          <tr>
+            <td><%= country.country %></td>
+            <td><%= link_to 'Ver', country, class: "btn-link" %></td>
+            <td><%= link_to 'Editar', edit_country_path(country), class: "btn-link" %></td>
+            <td><%= link_to 'Eliminar', country, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @countries, :container => false %>
+    </br></br>
 
-          <%= link_to 'Nuevo Pais', new_country_path, class: "btn btn-link" %>
-        </div>
-      </div> 
-    </div>
-    
-  </div>
+    <%= link_to 'Nuevo Pais', new_country_path, class: "btn btn-link" %>
+  </div> 
+</div>

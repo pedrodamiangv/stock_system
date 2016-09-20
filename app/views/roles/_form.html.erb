@@ -1,29 +1,31 @@
 <%= form_for(@role, :validate => true) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 <div class="container">
-  <div class="row">
-    <div id="registro">
-      <fieldset class="form-group">
-      <div class="col-xs-4">
-          <%= f.label "Rol de Usuario" %>
-          <p id="mensajeRole" class="error_message"></p>
-          <div id="fieldRole">
-            <%= f.text_field :role, :required => true, :maxlength => 100, :class => "form-control", :onkeyUp => "validarText(this,'fieldRole','mensajeRole')" %>
-          </div>
-          </br>
+  <div class="col-md-6 col-md-offset-1">
+    <div class="panel panel-default devise-bs ">
+      <div class="panel-body">
+        <fieldset class="form-group">
+        <div class="form-group">
+            <%= f.label "Rol de Usuario" %>
+            <p id="mensajeRole" class="error_message"></p>
+            <div id="fieldRole">
+              <%= f.text_field :role, :required => true, :maxlength => 100, :class => "form-control", :onkeyUp => "validarText(this,'fieldRole','mensajeRole')" %>
+            </div>
+            </br>
 
-          <%= f.label "Descripción" %>
-          <p id="mensajeDescripcion" class="error_message"></p>
-          <div id="fieldDescripcion">
-            <%= f.text_area :description, :maxlength => 255, :class => "form-control" %>
-          </div>
-          </br>
+            <%= f.label "Descripción" %>
+            <p id="mensajeDescripcion" class="error_message"></p>
+            <div id="fieldDescripcion">
+              <%= f.text_area :description, :maxlength => 255, :class => "form-control" %>
+            </div>
+            </br>
 
-          <%= f.submit "Guardar", :disabled => true, class: "btn btn-large btn-primary" %>
-          <%= link_to "Cancelar", roles_path, class: "btn btn-large btn-inverse" %>
-        <% end %>
+            <%= f.submit "Guardar", :disabled => true, class: "btn btn-large btn-primary" %>
+            <%= link_to "Cancelar", roles_path, class: "btn btn-large btn-inverse" %>
+          <% end %>
+        </div>
+        </fieldset>
       </div>
-      </fieldset>
     </div>
   </div>
 </div>

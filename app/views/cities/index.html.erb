@@ -1,40 +1,36 @@
+<% provide(:title, "Ciudades") %>
 <div class="flickr_pagination">
-    <div class="page_info">
-      <p id="notice"><%= notice %></p>
+  <div class="page_info">
+    <p id="notice"><%= notice %></p>
 
-      <div class="container">
-        <div class="row">
-          <legend>Lista de Ciudades</legend>
+    <legend>Lista de Ciudades</legend>
 
-          <table  id="my-table" class="table table-bordered">
-            <thead  class="table-title">
-              <tr>
-                <th class="span1 centrar">Ciudad</th>
-                <th class="span1 centrar">Departamento</th>
-                <th class="span1 centrar">Pais</th>
-                <th colspan="3" class="span5 centrar">Acciones</th>
-              </tr>
-            </thead>
+    <table  id="my-table" class="table table-bordered">
+      <thead  class="table-title">
+        <tr>
+          <th class="span1 centrar">Ciudad</th>
+          <th class="span1 centrar">Departamento</th>
+          <th class="span1 centrar">Pais</th>
+          <th colspan="3" class="span5 centrar">Acciones</th>
+        </tr>
+      </thead>
 
-            <tbody>
-              <% @cities.each do |city| %>
-                <tr>
-                  <td><%= city.city %></td>
-                  <td><%= city.departamento.departamento %></td>
-                  <td><%= city.departamento.country.country %></td>
-                  <td><%= link_to 'Ver', city, class: "btn-link" %></td>
-                  <td><%= link_to 'Editar', edit_city_path(city), class: "btn-link" %></td>
-                  <td><%= link_to 'Eliminar', city, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-          <%= will_paginate @cities, :container => false %>
-          </br></br>
+      <tbody>
+        <% @cities.each do |city| %>
+          <tr>
+            <td><%= city.city %></td>
+            <td><%= city.departamento.departamento %></td>
+            <td><%= city.departamento.country.country %></td>
+            <td><%= link_to 'Ver', city, class: "btn-link" %></td>
+            <td><%= link_to 'Editar', edit_city_path(city), class: "btn-link" %></td>
+            <td><%= link_to 'Eliminar', city, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @cities, :container => false %>
+    </br></br>
 
-          <%= link_to 'Nueva Ciudad', new_city_path, class: "btn btn-link" %>
-        </div>
-      </div> 
-    </div>
-    
+    <%= link_to 'Nueva Ciudad', new_city_path, class: "btn btn-link" %>
   </div>
+</div>

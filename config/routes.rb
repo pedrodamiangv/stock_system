@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :stores
   resources :settings do
     collection do
       get 'new_address_setting'

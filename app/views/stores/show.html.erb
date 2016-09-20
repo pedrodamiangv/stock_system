@@ -1,0 +1,26 @@
+<% provide(:title, "Depósitos") %>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @store.name %>
+</p>
+
+<p>
+  <strong>Descripción:</strong>
+  <%= @store.description %>
+</p>
+
+<p>
+  <strong>Dirección: </strong><%= @store.address.direccion %></br>
+  <strong>Calle: </strong><%= @store.address.calle %></br>
+  <strong>Barrio: </strong><%= @store.address.barrio %></br>
+  <strong>Ciudad: </strong><%= @store.address.city.city %></br>
+  <strong>Departamento/Provincia/Estado: </strong><%= @store.address.city.departamento.departamento %></br>
+  <strong>País: </strong><%= @store.address.city.departamento.country.country %></br>
+</p>
+
+<div id="vinculos">
+<i class="icon-edit"></i><%= link_to 'Editar', edit_store_path(@store), class: "btn-link" %> <i class="icon-list"></i><%= link_to 'Lista', stores_path, class: "btn-link"  %>
+</div>
+

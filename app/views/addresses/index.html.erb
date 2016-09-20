@@ -1,46 +1,42 @@
+<% provide(:title, "Direcciones") %>
 <div class="flickr_pagination">
-    <div class="page_info">
-      <p id="notice"><%= notice %></p>
+  <div class="page_info">
+    <p id="notice"><%= notice %></p>
 
-      <div class="container">
-        <div class="row">
-          <legend>Lista de Direcciones</legend>
+    <legend>Lista de Direcciones</legend>
 
-          <table  id="my-table" class="table table-bordered">
-            <thead  class="table-title">
-              <tr>
-                <th class="span1 centrar">Dirección</th>
-                <th class="span1 centrar">Calle</th>
-                <th class="span1 centrar">Barrio</th>
-                <th class="span1 centrar">Ciudad</th>
-                <th class="span1 centrar">Departamento/Estado/Provincia</th>
-                <th class="span1 centrar">Pais</th>
-                <th colspan="3" class="span5 centrar">Acciones</th>
-              </tr>
-            </thead>
+    <table  id="my-table" class="table table-bordered">
+      <thead  class="table-title">
+        <tr>
+          <th class="span1 centrar">Dirección</th>
+          <th class="span1 centrar">Calle</th>
+          <th class="span1 centrar">Barrio</th>
+          <th class="span1 centrar">Ciudad</th>
+          <th class="span1 centrar">Departamento/Estado/Provincia</th>
+          <th class="span1 centrar">Pais</th>
+          <th colspan="3" class="span5 centrar">Acciones</th>
+        </tr>
+      </thead>
 
-            <tbody>
-              <% @addresses.each do |address| %>
-                <tr>
-                  <td><%= address.direccion %></td>
-                  <td><%= address.calle %></td>
-                  <td><%= address.barrio %></td>
-                  <td><%= address.city.city %></td>
-                  <td><%= address.city.departamento.departamento %></td>
-                  <td><%= address.city.departamento.country.country %></td>
-                  <td><%= link_to 'Ver', address, class: "btn-link" %></td>
-                  <td><%= link_to 'Editar', edit_address_path(address), class: "btn-link" %></td>
-                  <td><%= link_to 'Eliminar', address, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-          <%= will_paginate @addresses, :container => false %>
-          </br></br>
+      <tbody>
+        <% @addresses.each do |address| %>
+          <tr>
+            <td><%= address.direccion %></td>
+            <td><%= address.calle %></td>
+            <td><%= address.barrio %></td>
+            <td><%= address.city.city %></td>
+            <td><%= address.city.departamento.departamento %></td>
+            <td><%= address.city.departamento.country.country %></td>
+            <td><%= link_to 'Ver', address, class: "btn-link" %></td>
+            <td><%= link_to 'Editar', edit_address_path(address), class: "btn-link" %></td>
+            <td><%= link_to 'Eliminar', address, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @addresses, :container => false %>
+    </br></br>
 
-          <%= link_to 'Nueva Dirección', new_address_path, class: "btn btn-link" %>
-        </div>
-      </div> 
-    </div>
-    
+    <%= link_to 'Nueva Dirección', new_address_path, class: "btn btn-link" %>
   </div>
+</div>

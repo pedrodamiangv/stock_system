@@ -1,0 +1,134 @@
+<div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-folder-close">
+                </span>&nbsp;Stock</a>
+            </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <table class="table">
+                    <% if current_user.is_admin? %>
+                        <tr>
+                            <td><%= link_to "Depósitos", stores_path, class: "glyphicon glyphicon-pencil text-primary" %></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <span class="glyphicon glyphicon-flash text-success"></span><a href="http://www.jquery2dotnet.com">News</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="glyphicon glyphicon-file text-info"></span><a href="http://www.jquery2dotnet.com">Newsletters</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="glyphicon glyphicon-comment text-success"></span><a href="http://www.jquery2dotnet.com">Comments</a>
+                                <span class="badge">42</span>
+                            </td>
+                        </tr>
+                    <% else %>
+                        <tr>
+                            <td><%= link_to "Depósitos", stores_path, class: "glyphicon glyphicon-pencil text-primary" %></td>
+                        </tr>
+                    <% end %>  
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-th">
+                </span>&nbsp;Direcciones</a>
+            </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse">
+            <div class="panel-body">
+                <table class="table">
+                    <tr>
+                        <td><%= link_to "Direcciones", addresses_path, class: "glyphicon glyphicon-tasks" %></td>
+                    </tr>
+                    <tr>
+                        <td><%= link_to "Ciudades", cities_path, class: "glyphicon glyphicon-tasks" %></td>
+                    </tr>
+                    <tr>
+                        <td><%= link_to "Departamentos", departamentos_path, class: "glyphicon glyphicon-tasks" %></td>
+                    </tr>
+                    <tr>
+                        <td><%= link_to "Paises", countries_path, class: "glyphicon glyphicon-tasks" %> <span class="label label-success"><%= Country.all.size %></span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <% if current_user.is_admin? %>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-user">
+                </span>&nbsp;Registro de Personas</a>
+            </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse">
+            <div class="panel-body">
+                <table class="table">
+                    <tr>
+                        <td><%= link_to "Personas", new_person_path, class: "glyphicon glyphicon-pencil text-primary" %></td>
+                    </tr>
+                    <tr>
+                        <td><%= link_to "Empleado", new_employee_path, class: "glyphicon glyphicon-pencil text-primary" %></td>
+                    </tr>
+                    <tr>
+                        <td><%= link_to "Usuario", new_user_registration_path, class: "glyphicon glyphicon-pencil text-primary" %></td>
+                    </tr>
+                    <tr>
+                        <td><%= link_to "Eliminar cuentas", users_path, class: "glyphicon glyphicon-trash text-danger" %></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <% end %>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><span class="glyphicon glyphicon-file">
+                </span>&nbsp;Listados</a>
+            </h4>
+        </div>
+        <div id="collapseFour" class="panel-collapse collapse">
+            <div class="panel-body">
+                <table class="table">
+                    <tr>
+                        <td><%= link_to "Personas", people_path, class: "glyphicon glyphicon-user" %></td>
+                    </tr>
+                    <tr>
+                        <td><%= link_to "Funcionarios", employees_path, class: "glyphicon glyphicon-user" %></td>
+                    </tr>
+                    <tr>
+                        <td><%= link_to "Usuarios", users_path, class: "glyphicon glyphicon-user" %></td>
+                    </tr>
+                    <% if current_user.is_admin? %>
+                        <tr>
+                            <td><%= link_to "Funciones en la empresa", roles_path, class: "glyphicon glyphicon-tasks" %></td>
+                        </tr>
+                        <tr>
+                            <td><%= link_to "Roles de Usuarios", roles_path, class: "glyphicon glyphicon-tasks" %></td>
+                        </tr>
+                        <tr>
+                            <td><%= link_to "Productos", roles_path, class: "glyphicon glyphicon-shopping-cart" %></td>
+                        </tr>
+                        <tr>
+                            <td><%= link_to "Costos", roles_path, class: "glyphicon glyphicon-usd" %></td>
+                        </tr>
+                    <% end %>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

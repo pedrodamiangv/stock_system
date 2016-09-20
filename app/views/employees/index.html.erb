@@ -1,53 +1,49 @@
+<% provide(:title, "Funcionarios") %>
 <div class="flickr_pagination">
-    <div class="page_info">
-      <p id="notice"><%= notice %></p>
+  <div class="page_info">
+    <p id="notice"><%= notice %></p>
 
-      <div class="container">
-        <div class="row">
-          <legend>Lista de Funcionarios registrados</legend>
+    <legend>Lista de Funcionarios registrados</legend>
 
-          <table  id="my-table" class="table table-bordered">
-            <thead  class="table-title">
-              <tr>
-                <th class="span1 centrar">Nombre</th>
-                <th class="span1 centrar">Fecha de Contrato</th>
-                <th class="span1 centrar">Funciones</th>
-                <th class="span1 centrar">Documento/Curriculum</th>
-                <th colspan="3" class="span5 centrar">Acciones</th>
-              </tr>
-            </thead>
+    <table  id="my-table" class="table table-bordered">
+      <thead  class="table-title">
+        <tr>
+          <th class="span1 centrar">Nombre</th>
+          <th class="span1 centrar">Fecha de Contrato</th>
+          <th class="span1 centrar">Funciones</th>
+          <th class="span1 centrar">Documento/Curriculum</th>
+          <th colspan="3" class="span5 centrar">Acciones</th>
+        </tr>
+      </thead>
 
-            <tbody>
-              <% @employees.each do |employee| %>
-                <tr>
-                  <td><%= link_to employee.person.full_name, employee.person %></td>
-                  <td><%= employee.contract_date %></td>
-                  <td>
-                    <table>
-                      <tbody>
-                        <% employee.functions.each do |function| %>
-                          <tr>
-                            <td><%= function.function %></td>
-                          </tr>
-                        <% end %>
-                      </tbody>
-                    </table>
-                  </td>
-                  <td><%= link_to 'Descargar documento/curriculum', employee.attachment_url, class: "btn-link" %></td>
-                  <td><%= link_to 'Ver', employee, class: "btn-link" %></td>
-                  <td><%= link_to 'Editar', edit_employee_path(employee), class: "btn-link" %></td>
-                  <td><%= link_to 'Eliminar', employee, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-          <%= will_paginate @employees, :container => false %>
-          </br></br>
+      <tbody>
+        <% @employees.each do |employee| %>
+          <tr>
+            <td><%= link_to employee.person.full_name, employee.person %></td>
+            <td><%= employee.contract_date %></td>
+            <td>
+              <table>
+                <tbody>
+                  <% employee.functions.each do |function| %>
+                    <tr>
+                      <td><%= function.function %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </td>
+            <td><%= link_to 'Descargar documento/curriculum', employee.attachment_url, class: "btn-link" %></td>
+            <td><%= link_to 'Ver', employee, class: "btn-link" %></td>
+            <td><%= link_to 'Editar', edit_employee_path(employee), class: "btn-link" %></td>
+            <td><%= link_to 'Eliminar', employee, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @employees, :container => false %>
+    </br></br>
 
-          <%= link_to 'Nuevo Funcionario', new_employee_path, class: "btn btn-link" %>
-        </div>
-      </div> 
-    </div>
-    
+    <%= link_to 'Nuevo Funcionario', new_employee_path, class: "btn btn-link" %>
   </div>
+</div>
 
